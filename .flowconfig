@@ -1,0 +1,12 @@
+[ignore]
+.*/node_modules/editions/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/.*/test/.*
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.decorators=ignore
+module.name_mapper='^fbjs/lib/shallowEqual$' -> '<PROJECT_ROOT>/flow/shallowEqual.js.flow'
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/flow/cssStub.js.flow'
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/flow/cssStub.js.flow'
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

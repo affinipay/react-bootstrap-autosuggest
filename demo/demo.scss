@@ -1,0 +1,330 @@
+@import "bootstrap/variables";
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+$grid-float-breakpoint: $screen-md-min;
+@import "bootstrap";
+
+body {
+  background-color: #f0f0f0;
+  font-size: 14px;
+}
+
+.navbar-autosuggest .navbar-header {
+  white-space: nowrap;
+  .logo {
+    height: 72px;
+    margin: 2rem;
+    vertical-align: top;
+  }
+  .titles {
+    display: inline-block;
+    margin: 2.5rem 0;
+    white-space: normal;
+    .title {
+      font-size: 1.7em;
+      font-weight: bold;
+      .primary {
+        color: #2daae1;
+      }
+      .secondary {
+        color: #000;
+      }
+    }
+    .subtitle {
+      color: #444;
+      margin: 0.5rem 0;
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.navbar-autosuggest .navbar-nav {
+  li {
+    font-size: 1.2em;
+    font-weight: bold;
+    a {
+      padding-bottom: 0.5em;
+    }
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      background-color: inherit;
+      color: #2daae1;
+      cursor: default;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .navbar-autosuggest .navbar-nav {
+    float: right;
+    margin-top: 3rem;
+    li a:hover {
+      border-bottom: 3px solid #2daae1;
+    }
+  }
+}
+
+.visible-xxs-inline {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .navbar-autosuggest .navbar-header {
+    .logo {
+      height: 48px;
+      margin-top: 3rem;
+    }
+    .titles {
+      margin: 1rem 0;
+      .title {
+        font-size: 1.5em;
+        line-height: 1.1;
+      }
+    }
+  }
+  .visible-xxs-inline {
+    display: inline;
+  }
+}
+
+.container {
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.footer {
+  line-height: 30px;
+  margin: 4rem 0;
+  text-align: center;
+
+  iframe {
+    border: none;
+    vertical-align: top;
+  }
+}
+
+.playground {
+  margin-bottom: 36px;
+
+  .example {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 4px;
+    padding-top: 30px;
+    position: relative;
+
+    &:after {
+      color: #aaa;
+      content: "Example";
+      font-size: 12px;
+      font-weight: bold;
+      left: 15px;
+      letter-spacing: 1px;
+      position: absolute;
+      text-shadow: 1px 1px 1px #fff;
+      text-transform: uppercase;
+      top: 15px;
+    }
+
+    .mount-node {
+      margin: 15px;
+    }
+
+    .editor {
+      margin: 15px;
+      overflow: hidden;
+      position: relative;
+
+      .CodeMirror {
+        border: 1px solid #888;
+        border-radius: 4px;
+        height: auto;
+      }
+
+      .ribbon {
+        background: #ec0;
+        color: #a60;
+        border: solid #fea;
+        border-width: 1px 0;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.5;
+        position: absolute;
+        right: -35px;
+        text-align: center;
+        text-shadow: 1px 1px 1px #fea;
+        top: 15px;
+        transform: rotate(45deg);
+        width: 120px;
+        z-index: 3;
+
+        a {
+          color: inherit;
+        }
+      }
+    }
+
+    .error-node {
+      margin: 15px;
+
+      .alert {
+        clear: both;
+        max-height: 200px;
+        overflow: auto;
+
+        pre {
+          background-color: inherit;
+          border: none;
+          color: inherit;
+          float: left;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .code-tab {
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: none;
+    display: inline-block;
+    float: right;
+    margin-left: 8px;
+    padding: 4px 8px;
+    position: relative;
+    top: -1px;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.anchor,
+.anchor:hover,
+.anchor:active,
+.anchor:focus {
+  color: black;
+  text-decoration: none;
+  position: relative;
+}
+.anchor-icon {
+  font-size: 90%;
+  padding-top: 0.1em;
+  position: absolute;
+  left: -0.8em;
+  opacity: 0;
+}
+
+h1:hover .anchor-icon,
+h1 a:focus .anchor-icon,
+h2:hover .anchor-icon,
+h2 a:focus .anchor-icon,
+h3:hover .anchor-icon,
+h3 a:focus .anchor-icon,
+h4:hover .anchor-icon,
+h4 a:focus .anchor-icon {
+  opacity: 0.5;
+}
+
+.dropdown-menu {
+  max-height: 20em;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.state-item {
+  clear: both;
+  height: 41px;
+  line-height: 41px;
+  .state-image {
+    float: right;
+  }
+}
+
+.abbrev {
+  font-size: 12px;
+  opacity: 0.7;
+  &:before {
+    content: "\2003"
+  }
+}
+
+// adjust position of feedback icon due to clear button
+#tagInput {
+  .form-control-feedback {
+    right: 34px;
+  }
+  .dropdown, .dropup {
+    & + .form-control-feedback {
+      right: 68px;
+    }
+  }
+}
+
+.tag img {
+  height: 1em;
+}
+
+.repo {
+  overflow-y: auto;
+}
+
+.repo-avatar {
+  float: left;
+  margin-right: 10px;
+  padding: 3px 0;
+  width: 60px;
+  img {
+    border-radius: 3px;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.repo-meta {
+  margin-left: 70px;
+  overflow-x: hidden;
+}
+
+.repo-title {
+  color: black;
+  font-weight: bold;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.repo-desc {
+  color: #777;
+  overflow-x: hidden;
+  padding: 3px 0;
+  text-overflow: ellipsis;
+}
+
+.repo-stats {
+  color: #aaa;
+  font-size: 11px;
+  > div {
+    display: inline-block;
+    &:not(:first-child) {
+      margin-left: 1em;
+    }
+  }
+}
+
+li.active {
+  .repo-title {
+    color: white;
+  }
+  .repo-desc, .repo-stats {
+    color: #ccc;
+  }
+}

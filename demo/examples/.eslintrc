@@ -1,0 +1,12 @@
+{
+  "globals": {
+    "Autosuggest": false,
+    "React": false,
+    "ReactDOM": false,
+    "mountNode": false
+  },
+  "rules": {
+    "no-undef": 0,
+    "react/jsx-no-undef": 0
+  }
+}

@@ -1,0 +1,253 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+$autosuggest-dropdown-toggle-width-base: ($padding-base-horizontal * 2 + $caret-width-base * 2 + 2) !default;
+$autosuggest-dropdown-toggle-width-small: ($padding-small-horizontal * 2 + $caret-width-base * 2 + 2) !default;
+$autosuggest-dropdown-toggle-width-large: ($padding-large-horizontal * 2 + $caret-width-large * 2 + 2) !default;
+$autosuggest-choice-bg-color: #eee;
+$autosuggest-choice-border-color: #aaa;
+$autosuggest-choice-border-radius: $border-radius-small;
+$autosuggest-choice-color: $input-color;
+$autosuggest-choice-close-bg-color: $autosuggest-choice-bg-color;
+$autosuggest-choice-close-bg-hover-color: #ddd;
+$autosuggest-choice-close-color: $autosuggest-choice-border-color;
+$autosuggest-choice-close-hover-color: #000;
+$autosuggest-choice-gutter-base: 5px;
+$autosuggest-choice-gutter-small: 4px;
+$autosuggest-choice-gutter-large: 8px;
+
+@mixin form-control-feedback-size($input-height, $font-size) {
+  font-size: $font-size;
+  height: $input-height;
+  line-height: $input-height;
+  width: $input-height;
+}
+
+// adjust position of feedback icon due to dropdown toggle
+.autosuggest {
+  &.dropdown + .form-control-feedback,
+  &.dropup + .form-control-feedback {
+    right: $autosuggest-dropdown-toggle-width-base;
+  }
+}
+.form-group-sm .autosuggest {
+  & + .form-control-feedback {
+    @include form-control-feedback-size($input-height-small, $font-size-small)
+  }
+  &.dropdown + .form-control-feedback,
+  &.dropup + .form-control-feedback {
+    right: $autosuggest-dropdown-toggle-width-small;
+  }
+}
+.form-group-lg .autosuggest {
+  & + .form-control-feedback {
+    @include form-control-feedback-size($input-height-large, $font-size-large)
+  }
+  &.dropdown + .form-control-feedback,
+  &.dropup + .form-control-feedback {
+    right: $autosuggest-dropdown-toggle-width-large;
+  }
+}
+
+// fix input group button height to match input box (bootstrap-sass bug?)
+.autosuggest .input-group-btn .btn {
+  height: $input-height-base;
+}
+
+// extend Bootstrap form validation styles to input group buttons, including dropdown toggles
+.has-success .input-group-btn .btn {
+  color: $state-success-text;
+  border-color: $state-success-text;
+  background-color: $state-success-bg;
+}
+
+.has-warning .input-group-btn .btn {
+  color: $state-warning-text;
+  border-color: $state-warning-text;
+  background-color: $state-warning-bg;
+}
+
+.has-error .input-group-btn .btn {
+  color: $state-danger-text;
+  border-color: $state-danger-text;
+  background-color: $state-danger-bg;
+}
+
+.autosuggest .dropdown-menu {
+  // ensure dropdown menu is at least as wide as the input group
+  min-width: 100%;
+
+  // indicate using hover style that pressing enter while input is focused and
+  // dropdown menu is open will select the first item
+  li.pseudofocused > a {
+    color: $dropdown-link-hover-color;
+    background-color: $dropdown-link-hover-bg;
+  }
+
+  // use CSS for localization of show-all/no-matches text
+  .show-all {
+    font-style: italic;
+  }
+  .show-all:before {
+    content: "Show all"
+  }
+  .no-matches:after {
+    content: " (no matches)"
+  }
+  .show-all:lang(de):before {
+    content: "Zeige alles"
+  }
+  .no-matches:lang(de):after {
+    content: " (keine Treffer)"
+  }
+  .show-all:lang(es):before {
+    content: "Mostrar todo"
+  }
+  .no-matches:lang(es):after {
+    content: " (no hay coincidencias)"
+  }
+  .show-all:lang(de):before {
+    content: "Montre tout"
+  }
+  .no-matches:lang(de):after {
+    content: " (pas de correspondance)"
+  }
+}
+
+.autosuggest-choices {
+  cursor: text;
+  overflow: hidden;
+  li {
+    // allow li/input to fill container if !has-items
+    display: block;
+  }
+  &.focused {
+    $color: $input-border-focus;
+    $color-rgba: rgba(red($color), green($color), blue($color), .6);
+    border-color: $color;
+    outline: 0;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $color-rgba);
+    z-index: 3 !important;
+  }
+  &.has-items {
+    padding: 0 !important;
+    li {
+      display: inline-block;
+      margin-left: $autosuggest-choice-gutter-base;
+      margin-top: $autosuggest-choice-gutter-base;
+    }
+    li:nth-last-child(2) {
+      margin-bottom: $autosuggest-choice-gutter-base;
+    }
+    input {
+      vertical-align: middle;
+    }
+    &.auto-height {
+      height: auto;
+    }
+  }
+}
+
+.input-group-sm .autosuggest-choices.has-items {
+  li {
+    margin-left: $autosuggest-choice-gutter-small;
+    margin-top: $autosuggest-choice-gutter-small;
+  }
+  li:nth-last-child(2) {
+    margin-bottom: $autosuggest-choice-gutter-small;
+  }
+}
+
+.input-group-lg .autosuggest-choices.has-items {
+  li {
+    margin-left: $autosuggest-choice-gutter-large;
+    margin-top: $autosuggest-choice-gutter-large;
+  }
+  li:nth-last-child(2) {
+    margin-bottom: $autosuggest-choice-gutter-large;
+  }
+}
+
+.autosuggest-choice {
+  background-color: $autosuggest-choice-bg-color;
+  border: 1px solid $autosuggest-choice-border-color;
+  border-radius: $autosuggest-choice-border-radius;
+  cursor: default;
+  line-height: normal;
+  padding: 0;
+  vertical-align: top;
+  white-space: nowrap;
+  &:focus {
+    $color: $input-border-focus;
+    $color-rgba: rgba(red($color), green($color), blue($color), .6);
+    border-color: $color;
+    outline: 0;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $color-rgba);
+  }
+}
+
+.autosuggest-choice-close {
+  border-right: 1px solid $autosuggest-choice-border-color;
+  color: $autosuggest-choice-border-color;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1px 4px 3px 5px;
+  &:before {
+    content: "\00d7 ";
+  }
+  .autosuggest-choices:not([disabled]) &:hover {
+    background-color: $autosuggest-choice-close-bg-hover-color;
+    color: $autosuggest-choice-close-hover-color;
+  }
+  .autosuggest-choices[disabled] & {
+    cursor: $cursor-disabled;
+  }
+}
+
+.autosuggest-choice-label {
+  color: $autosuggest-choice-color;
+  display: inline-block;
+  padding: 1px 5px 3px;
+}
+
+.autosuggest-input-choice {
+  overflow: hidden;
+  white-space: nowrap;
+  input {
+    @include placeholder;
+    border: none;
+    padding: 0;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+      background-color: $input-bg-disabled;
+      opacity: 1;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      cursor: $cursor-disabled;
+    }
+  }
+}
+
+@mixin autosuggest-choices-validation($text-color: #555, $border-color: #ccc, $background-color: #f5f5f5) {
+  &.focused {
+    border-color: darken($border-color, 10%);
+    $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($border-color, 20%);
+    @include box-shadow($shadow);
+  }
+}
+
+.has-success .autosuggest-choices {
+  @include autosuggest-choices-validation($state-success-text, $state-success-text, $state-success-bg);
+}
+.has-warning .autosuggest-choices {
+  @include autosuggest-choices-validation($state-warning-text, $state-warning-text, $state-warning-bg);
+}
+.has-error .autosuggest-choices {
+  @include autosuggest-choices-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+}
