@@ -1,6 +1,11 @@
 ## Autosuggest
 
-From [`../../src/Autosuggest.js`](../../src/Autosuggest.js)
+From [`src/Autosuggest.js`](../../master/src/Autosuggest.js)
+
+Combo-box input component that combines a drop-down list and a single-line
+editable text box. The set of options for the drop-down list can be
+controlled dynamically. Selection of multiple items is supported using a
+tag/pill-style user interface within a simulated text box.
 
 #### addonAfter
 
