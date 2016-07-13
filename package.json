@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-autosuggest",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Autosuggest component for react-bootstrap",
   "main": "lib/Autosuggest.js",
   "files": [
