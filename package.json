@@ -6,9 +6,10 @@
   "files": [
     "demo",
     "dist",
-    "docs",
+    "flow",
     "lib",
     "src",
+    "test",
     "webpack"
   ],
   "scripts": {
