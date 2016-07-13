@@ -101,6 +101,9 @@ gulp.task('apidocs', ['clean-apidocs'], function() {
       path: apidocs
     }))
     .pipe(gulpReplace('&#x27;', '\''))
+    .pipe(gulpReplace(
+      'From [`../../src/Autosuggest.js`](../../src/Autosuggest.js)',
+      'From [`src/Autosuggest.js`](../../master/src/Autosuggest.js)'))
     .pipe(gulp.dest(apidocs))
 })
 

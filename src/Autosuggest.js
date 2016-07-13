@@ -80,6 +80,12 @@ type State = {
   searchValue: ?string;
 }
 
+/**
+ * Combo-box input component that combines a drop-down list and a single-line
+ * editable text box. The set of options for the drop-down list can be
+ * controlled dynamically. Selection of multiple items is supported using a
+ * tag/pill-style user interface within a simulated text box.
+ */
 export default class Autosuggest extends React.Component {
   static propTypes = {
     /**

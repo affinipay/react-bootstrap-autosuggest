@@ -42,7 +42,7 @@ ReactDOM.render(
         <Nav activeKey={1}>
           <NavItem eventKey={1} href="#">Examples</NavItem>
           <NavItem eventKey={2} href="https://github.com/affinipay/react-bootstrap-autosuggest">Source</NavItem>
-          <NavItem eventKey={3} href="https://github.com/affinipay/react-bootstrap-autosuggest/tree/master/apidocs/Autosuggest.md">Documentation</NavItem>
+          <NavItem eventKey={3} href="https://github.com/affinipay/react-bootstrap-autosuggest/blob/gh-pages/apidocs/Autosuggest.md">Documentation</NavItem>
           <NavItem eventKey={4} href="https://github.com/affinipay/react-bootstrap-autosuggest/issues">Issues</NavItem>
         </Nav>
       </Navbar.Collapse>

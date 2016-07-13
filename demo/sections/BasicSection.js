@@ -30,7 +30,7 @@ export default function BasicSection() {
         ribbonText={<a href="#playground">Edit Me!</a>} />
       <Alert bsStyle="info">
         For instructions on installing and importing Autosuggest within your project,
-        see the <a href="https://github.com/affinipay/react-bootstrap-autosuggest/README.md">README</a>.
+        see the <a href="https://github.com/affinipay/react-bootstrap-autosuggest/blob/master/README.md">README</a>.
       </Alert>
       <p>
         Note that just like a React input element, an Autosuggest without a <code>value</code> property is
