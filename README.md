@@ -38,7 +38,7 @@ There are many auto-complete&thinsp;/&thinsp;auto-suggest&thinsp;/&thinsp;combo-
 
 ## Support
 
-Please use [GitHub issues](https://github.com/affinipay/react-bootstrap-autosuggest/issues) for bug reports or feature requests. For usage questions, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/rbs-autosuggest) with a `rbs-autosuggest` tag.
+Please use [GitHub issues](https://github.com/affinipay/react-bootstrap-autosuggest/issues) for bug reports or feature requests. For usage questions, please use [Stack Overflow](http://stackoverflow.com/) to [ask a question with the `rbs-autosuggest` tag](http://stackoverflow.com/questions/ask?tags=rbs-autosuggest).
 
 ## Contributions
 
