@@ -4,13 +4,9 @@
   "description": "Autosuggest component for react-bootstrap",
   "main": "lib/Autosuggest.js",
   "files": [
-    "demo",
     "dist",
-    "flow",
     "lib",
-    "src",
-    "test",
-    "webpack"
+    "src"
   ],
   "scripts": {
     "build": "gulp",
@@ -28,7 +24,7 @@
   "author": "Trevor Robinson <trevor@affinipay.com>",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/affinipay/react-bootstrap-autosuggest.git"
+    "url": "https://github.com/affinipay/react-bootstrap-autosuggest.git"
   },
   "keywords": [
     "react",
@@ -57,7 +53,6 @@
     "babel-loader": "^6.2.4",
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.10.2",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",

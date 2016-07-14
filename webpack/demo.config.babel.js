@@ -29,7 +29,7 @@ export function withOptions(options = cmdLineOptions) {
 
     output: {
       filename: '[name].js',
-      path: path.resolve('demo-dist'),
+      path: path.resolve('site'),
       publicPath: options.debug ? `${webpackDevServerAddress}/` : '/'
     },
 
