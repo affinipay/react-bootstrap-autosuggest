@@ -92,6 +92,8 @@ gulp.task('webpack-min', ['clean-dist'], function() {
     .pipe(gulp.dest(dist))
 })
 
+gulp.task('default', ['babel', 'webpack', 'webpack-min'])
+
 gulp.task('apidocs', ['clean-apidocs'], function() {
   return gulp.src('./src/Autosuggest.js')
     // react-docgen uses an old version of babylon
@@ -160,6 +162,4 @@ gulp.task('karma', function (callback) {
 
 gulp.task('test', ['lint', 'flow', 'karma'])
 
-gulp.task('default', ['apidocs', 'babel', 'webpack', 'webpack-min'])
-
-gulp.task('dist', ['default', 'site'])
+gulp.task('all', ['default', 'site', 'test'])

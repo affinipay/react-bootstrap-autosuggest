@@ -16,7 +16,7 @@
     "gh-pages": "gulp site && gh-pages -d site",
     "lint": "gulp lint",
     "prepublish": "gulp",
-    "release": "gulp dist && release",
+    "release": "gulp && release",
     "site": "gulp site",
     "test": "COVERAGE=true gulp test",
     "test-watch": "COVERAGE=true karma start"
