@@ -1016,9 +1016,11 @@ export default class Autosuggest extends React.Component {
       }
     }
     const noneSelected = !this.props.multiple || !this.state.selectedItems.length
+    // set autoComplete off to avoid a redundant browser drop-down menu,
+    // but allow it to be overridden by extra props for auto-fill purposes
     return <input
-      {...extraProps}
       autoComplete="off"
+      {...extraProps}
       className={classNames(this.props.className,
         { 'form-control': !this.props.multiple })}
       ref="input"
