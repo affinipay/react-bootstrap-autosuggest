@@ -12,7 +12,7 @@ import Anchor from './Anchor'
 import Playground from './Playground'
 import SizeSelect from './SizeSelect'
 import ValidationSelect from './ValidationSelect'
-const Browser = require('raw!../examples/Browser').trim()
+const Browser = require('raw-loader!../examples/Browser').trim()
 
 export default class ReactBootstrapSection extends React.Component {
   constructor(...args) {

@@ -9,7 +9,7 @@ import {
 import Autosuggest, { ItemAdapter } from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const Country = require('raw!../examples/Country').trim()
+const Country = require('raw-loader!../examples/Country').trim()
 
 export default class ItemsAsValuesSection extends React.Component {
   constructor(...args) {

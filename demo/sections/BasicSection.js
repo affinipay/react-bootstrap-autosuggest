@@ -3,7 +3,7 @@ import { Alert } from 'react-bootstrap'
 import Autosuggest from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const NamePrefix = require('raw!../examples/NamePrefix').trim()
+const NamePrefix = require('raw-loader!../examples/NamePrefix').trim()
 
 const scope = { Autosuggest }
 

@@ -3,7 +3,7 @@ import { ControlLabel, FormGroup } from 'react-bootstrap'
 import Autosuggest from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const Number = require('raw!../examples/Number').trim()
+const Number = require('raw-loader!../examples/Number').trim()
 
 const scope = { Autosuggest, ControlLabel, FormGroup }
 

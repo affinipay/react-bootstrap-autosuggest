@@ -95,20 +95,11 @@ module.exports = function(config) {
     webpack: Object.assign({}, webpackConfig, {
       devtool: 'inline-source-map',
       externals: {
-        // https://github.com/airbnb/enzyme/issues/302
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-      },
-      // cheerio requires json-loader
-      module: Object.assign({}, webpackConfig.module, {
-        loaders: webpackConfig.module.loaders.concat(
-          {
-            test: /\.json$/,
-            loader: 'json'
-          }
-        )
-      })
+        'cheerio': 'window',
+        'react/addons': 'react',
+        'react/lib/ExecutionEnvironment': 'react',
+        'react/lib/ReactContext': 'react',
+      }
     }),
 
     webpackServer: {

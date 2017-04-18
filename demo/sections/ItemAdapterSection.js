@@ -8,7 +8,7 @@ import {
 import Autosuggest, { ItemAdapter } from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const StateProvince = require('raw!../examples/StateProvince').trim()
+const StateProvince = require('raw-loader!../examples/StateProvince').trim()
 
 export default class ItemAdapterSection extends React.Component {
   constructor(...args) {

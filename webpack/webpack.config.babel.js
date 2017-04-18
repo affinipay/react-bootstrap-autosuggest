@@ -20,8 +20,8 @@ export function withOptions(options = cmdLineOptions) {
       loaders: [
         {
           ...jsLoader,
-          query: {
-            ...jsLoader.query,
+          options: {
+            ...jsLoader.options,
             plugins: [
               'dev-expression'
             ]
@@ -32,8 +32,9 @@ export function withOptions(options = cmdLineOptions) {
     },
 
     resolve: {
-      root: [
-        path.resolve('src')
+      modules: [
+        path.resolve('src'),
+        'node_modules'
       ]
     },
 
@@ -60,7 +61,4 @@ export function withOptions(options = cmdLineOptions) {
   }
 }
 
-export default {
-  ...withOptions(),
-  withOptions
-}
+export default withOptions()

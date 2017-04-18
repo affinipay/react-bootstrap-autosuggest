@@ -10,8 +10,8 @@ import { Server as KarmaServer } from 'karma'
 import webpack from 'webpack'
 import webpackStream from 'webpack-stream'
 
-import demoConfig from './webpack/demo.config.babel'
-import webpackConfig from './webpack/webpack.config.babel'
+import { withOptions as demoWithOptions } from './webpack/demo.config.babel'
+import webpackConfig, { withOptions as webpackWithOptions } from './webpack/webpack.config.babel'
 
 const apidocs = './site/apidocs'
 const demo = './demo'
@@ -76,7 +76,7 @@ gulp.task('webpack', ['clean-dist'], function() {
 })
 
 gulp.task('webpack-min', ['clean-dist'], function() {
-  const baseConfig = webpackConfig.withOptions({
+  const baseConfig = webpackWithOptions({
     optimizeMinimize: true
   })
   const config = {
@@ -87,7 +87,7 @@ gulp.task('webpack-min', ['clean-dist'], function() {
       new webpack.optimize.UglifyJsPlugin()
     ]
   }
-  return gulp.src(getWebpackEntries(webpackConfig))
+  return gulp.src(getWebpackEntries(config))
     .pipe(webpackStream(config))
     .pipe(gulp.dest(dist))
 })
@@ -123,7 +123,7 @@ gulp.task('demo-copy', ['clean-demo'], function() {
 })
 
 gulp.task('demo-webpack', ['clean-demo'], function() {
-  const baseConfig = demoConfig.withOptions({
+  const baseConfig = demoWithOptions({
     optimizeMinimize: true
   })
   const config = {
@@ -134,7 +134,7 @@ gulp.task('demo-webpack', ['clean-demo'], function() {
       new webpack.optimize.UglifyJsPlugin()
     ]
   }
-  const entries = getWebpackEntries(demoConfig)
+  const entries = getWebpackEntries(config)
   return gulp.src(entries[entries.length - 1])
     .pipe(webpackStream(config))
     .pipe(gulp.dest(site))

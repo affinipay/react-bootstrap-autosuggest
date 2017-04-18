@@ -11,18 +11,17 @@ export default {
   ...testConfig,
 
   module: {
-    preLoaders: [
+    loaders: [
       {
-        test: /\.js/,
-        loader: 'babel-istanbul',
-        query: {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'babel-istanbul-loader',
+        options: {
           cacheDirectory: true
         },
         include: paths.SRC,
         exclude: /node_modules/
-      }
-    ],
-    loaders: [
+      },
       {
         ...jsLoader,
         include: [paths.TEST]

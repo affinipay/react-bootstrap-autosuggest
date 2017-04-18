@@ -1,6 +1,7 @@
 // @flow
 
 import shallowEqual from 'fbjs/lib/shallowEqual'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Dropdown, MenuItem } from 'react-bootstrap'
 import ReactDOM from 'react-dom'
@@ -26,22 +27,22 @@ type State = {}
 
 export default class Suggestions extends React.Component {
   static propTypes = {
-    datalistMessage: React.PropTypes.node,
-    filtered: React.PropTypes.bool,
-    focusedIndex: React.PropTypes.number,
-    getItemKey: React.PropTypes.func.isRequired,
-    isSelectedItem: React.PropTypes.func.isRequired,
-    items: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
-    labelledBy: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
+    datalistMessage: PropTypes.node,
+    filtered: PropTypes.bool,
+    focusedIndex: PropTypes.number,
+    getItemKey: PropTypes.func.isRequired,
+    isSelectedItem: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.any).isRequired,
+    labelledBy: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
     ]),
-    onClose: React.PropTypes.func,
-    onDatalistMessageSelect: React.PropTypes.func,
-    onDisableFilter: React.PropTypes.func,
-    onSelect: React.PropTypes.func.isRequired,
-    open: React.PropTypes.bool,
-    renderItem: React.PropTypes.func.isRequired
+    onClose: PropTypes.func,
+    onDatalistMessageSelect: PropTypes.func,
+    onDisableFilter: PropTypes.func,
+    onSelect: PropTypes.func.isRequired,
+    open: PropTypes.bool,
+    renderItem: PropTypes.func.isRequired
   };
 
   props: Props;
@@ -53,7 +54,7 @@ export default class Suggestions extends React.Component {
 
   isFocused(): boolean {
     const menuNode = ReactDOM.findDOMNode(this.refs.menu)
-    return menuNode && document && menuNode.contains(document.activeElement)
+    return menuNode != null && document && menuNode.contains(document.activeElement)
   }
 
   focusFirst() {

@@ -12,7 +12,7 @@ import Autosuggest, { ItemAdapter } from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
 import SizeSelect from './SizeSelect'
-const Tags = require('raw!../examples/Tags').trim()
+const Tags = require('raw-loader!../examples/Tags').trim()
 
 export default class MultipleSection extends React.Component {
   constructor(...args) {

@@ -21,7 +21,7 @@ export function withOptions(options = cmdLineOptions) {
   return {
     ...baseConfig,
 
-    devtool: options.debug ? 'source-map' : null,
+    devtool: options.debug ? 'source-map' : false,
 
     entry: {
       'demo': entryBundle
@@ -43,7 +43,7 @@ export function withOptions(options = cmdLineOptions) {
         { ...jsLoader, exclude: /node_modules|examples/ },
         cssLoader,
         sassLoader,
-        { test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/, loader: 'file?name=[name].[ext]' }
+        { test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/, loader: 'file-loader?name=[name].[ext]' }
       ]
     },
 
@@ -51,15 +51,13 @@ export function withOptions(options = cmdLineOptions) {
       alias: {
         'react-bootstrap-autosuggest': 'Autosuggest.js'
       },
-      root: [
+      modules: [
         path.resolve('demo'),
-        path.resolve('src')
+        path.resolve('src'),
+        'node_modules'
       ]
     }
   }
 }
 
-export default {
-  ...withOptions(),
-  withOptions
-}
+export default withOptions()

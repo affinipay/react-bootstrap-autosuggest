@@ -3,20 +3,21 @@
 import classNames from 'classnames'
 import shallowEqual from 'fbjs/lib/shallowEqual'
 import keycode from 'keycode'
+import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import type { Node } from './types'
 
 export default class Choices extends React.Component {
   static propTypes = {
-    autoHeight: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    focused: React.PropTypes.bool,
-    inputValue: React.PropTypes.string,
-    items: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
-    onKeyPress: React.PropTypes.func,
-    onRemove: React.PropTypes.func,
-    renderItem: React.PropTypes.func.isRequired
+    autoHeight: PropTypes.bool,
+    disabled: PropTypes.bool,
+    focused: PropTypes.bool,
+    inputValue: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.any).isRequired,
+    onKeyPress: PropTypes.func,
+    onRemove: PropTypes.func,
+    renderItem: PropTypes.func.isRequired
   };
 
   props: {
@@ -36,7 +37,7 @@ export default class Choices extends React.Component {
 
   constructor(...args: any) {
     super(...args)
-
+    /* istanbul ignore next: https://github.com/gotwarlost/istanbul/issues/690#issuecomment-265718617 */
     const self: any = this // https://github.com/facebook/flow/issues/1517
     self._handleKeyDown = this._handleKeyDown.bind(this)
     self._handleKeyPress = this._handleKeyPress.bind(this)
@@ -155,9 +156,10 @@ export default class Choices extends React.Component {
 
   _focusPrevious() {
     const { items, activeIndex } = this._getItemsAndActiveIndex(true)
+    // istanbul ignore else: currently input handles wrap-around
     if (activeIndex > 0) {
       items[activeIndex - 1].focus()
-    } else {
+    } else if (items.length > 0) {
       items[items.length - 1].focus()
     }
   }
@@ -176,7 +178,7 @@ export default class Choices extends React.Component {
   _focusInput() {
     const node = ReactDOM.findDOMNode(this)
     // istanbul ignore else
-    if (node) {
+    if (node instanceof Element) {
       const input = node.querySelector('input')
       // istanbul ignore else
       if (input) {
@@ -210,17 +212,19 @@ export default class Choices extends React.Component {
   _getItemsAndActiveIndex(includeInput: boolean): { items: HTMLElement[], activeIndex: number } {
     const items = this._getFocusableMenuItems(includeInput)
     const activeElement = document.activeElement
-    const activeIndex = items.indexOf(activeElement)
+    const activeIndex = activeElement ? items.indexOf(activeElement) : // istanbul ignore next
+      -1
     return { items, activeIndex }
   }
 
   _getFocusableMenuItems(includeInput: boolean): HTMLElement[] {
     const node = ReactDOM.findDOMNode(this)
-    // istanbul ignore if
-    if (!node) {
+    // istanbul ignore else
+    if (node instanceof Element) {
+      return Array.from(node.querySelectorAll(
+        includeInput ? '[tabIndex="-1"],input' : '[tabIndex="-1"]'))
+    } else {
       return []
     }
-    return Array.from(node.querySelectorAll(
-      includeInput ? '[tabIndex="-1"],input' : '[tabIndex="-1"]'))
   }
 }

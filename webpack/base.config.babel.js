@@ -14,11 +14,11 @@ export const cmdLineOptions = yargs
   })
   .argv
 
-export const jsLoaderName = 'babel'
+export const jsLoaderName = 'babel-loader'
 export const jsLoader = {
-  test: /\.js/,
+  test: /\.js$/,
   loader: jsLoaderName,
-  query: {
+  options: {
     cacheDirectory: true
   },
   exclude: /node_modules/
@@ -52,8 +52,8 @@ export function getBaseConfig(options = cmdLineOptions) {
     devtool: 'source-map',
 
     module: {
-      preLoaders: [
-        { test: /\.js$/, loader: 'eslint', exclude: /node_modules/ }
+      loaders: [
+        { test: /\.js$/, enforce: 'pre', loader: 'eslint-loader', exclude: /node_modules/ }
       ]
     },
 

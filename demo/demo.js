@@ -16,6 +16,7 @@ import MultipleSection from './sections/MultipleSection'
 import DynamicSection from './sections/DynamicSection'
 import PlaygroundSection from './sections/PlaygroundSection'
 
+import 'Autosuggest.scss'
 import 'demo.scss'
 
 ReactDOM.render(

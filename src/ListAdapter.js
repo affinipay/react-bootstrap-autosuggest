@@ -17,7 +17,7 @@ export default class ListAdapter<I, L> {
     return !this.getLength(list)
   }
 
-  getLength: (list: L) => number;
+  +getLength: (list: L) => number;
 
   filter(list: L, predicate: (item: I) => boolean): I[] {
     return this.toArray(list).filter(predicate)
@@ -32,5 +32,5 @@ export default class ListAdapter<I, L> {
     return this.find(list, item => this.itemAdapter.itemMatchesInput(item, foldedValue))
   }
 
-  toArray: (list: L) => I[];
+  +toArray: (list: L) => I[];
 }

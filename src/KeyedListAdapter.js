@@ -12,9 +12,8 @@ export default class KeyedListAdapter<V, L> extends ListAdapter<Object, L> {
 
   _getKeyValueItem(key: string, value: V): Object {
     const { itemKeyPropName } = this
-    const {
-      itemValuePropName /* istanbul ignore next */ = 'value'
-    } = this.props
+    // istanbul ignore next
+    const { itemValuePropName = 'value' } = this.props
     if (typeof value === 'object' && itemValuePropName in (value: any)) {
       if ((value: any)[itemKeyPropName] === key) {
         return (value: any)

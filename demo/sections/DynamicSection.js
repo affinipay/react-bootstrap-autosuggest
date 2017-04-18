@@ -9,7 +9,7 @@ import {
 import Autosuggest, { ItemAdapter } from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const GithubRepo = require('raw!../examples/GithubRepo').trim()
+const GithubRepo = require('raw-loader!../examples/GithubRepo').trim()
 
 export default class DynamicSection extends React.Component {
   constructor(...args) {

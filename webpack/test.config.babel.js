@@ -17,8 +17,9 @@ export default {
     alias: {
       'react-bootstrap-autosuggest': '../src/Autosuggest.js'
     },
-    root: [
-      path.resolve('src')
+    modules: [
+      path.resolve('src'),
+      'node_modules'
     ]
   }
 }

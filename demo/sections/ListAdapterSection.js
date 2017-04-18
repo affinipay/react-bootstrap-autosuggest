@@ -7,7 +7,7 @@ import {
 import Autosuggest, { ListAdapter } from 'react-bootstrap-autosuggest'
 import Anchor from './Anchor'
 import Playground from './Playground'
-const Note = require('raw!../examples/Note').trim()
+const Note = require('raw-loader!../examples/Note').trim()
 
 const scope = {
   Autosuggest,

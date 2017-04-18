@@ -3,12 +3,11 @@
 import classNames from 'classnames'
 import shallowEqual from 'fbjs/lib/shallowEqual'
 import keycode from 'keycode'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import ReactDOM from 'react-dom'
 import warning from 'warning'
-
-import 'Autosuggest.scss'
 
 import Choices from './Choices'
 import Suggestions from './Suggestions'
@@ -92,37 +91,37 @@ export default class Autosuggest extends React.Component {
      * Text or component appearing in the input group after the input element
      * (and before any button specified in `buttonAfter`).
      */
-    addonAfter: React.PropTypes.node,
+    addonAfter: PropTypes.node,
     /**
       * Text or component appearing in the input group before the input element
       * (and before any button specified in `buttonBefore`).
       */
-    addonBefore: React.PropTypes.node,
+    addonBefore: PropTypes.node,
     /**
      * Indicates whether duplicate values are allowed in `multiple` mode.
      */
-    allowDuplicates: React.PropTypes.bool,
+    allowDuplicates: PropTypes.bool,
     /**
      * Specifies the size of the form group and its contained components.
      * Leave undefined for normal/medium size.
      */
-    bsSize: React.PropTypes.oneOf(['small', 'large']),
+    bsSize: PropTypes.oneOf(['small', 'large']),
     /**
      * Button component appearing in the input group after the input element
      * (and after any add-on specified in `addonAfter`).
      */
-    buttonAfter: React.PropTypes.node,
+    buttonAfter: PropTypes.node,
     /**
      * Button component appearing in the input group before the input element
      * (and after any add-on specified in `addonBefore`).
      */
-    buttonBefore: React.PropTypes.node,
+    buttonBefore: PropTypes.node,
     /**
      * React component class used to render the selected items in multiple mode.
      */
-    choicesClass: React.PropTypes.oneOfType([
-      React.PropTypes.func,
-      React.PropTypes.string
+    choicesClass: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string
     ]),
     /**
      * Indicates whether the drop-down menu should be closed automatically when
@@ -130,7 +129,7 @@ export default class Autosuggest extends React.Component {
      * user can see any additional information about the selected item (such as
      * a shorthand code that caused it to be selected).
      */
-    closeOnCompletion: React.PropTypes.bool,
+    closeOnCompletion: PropTypes.bool,
     /**
      * A collection of items (such as an array, object, or Map) used as
      * auto-complete suggestions. Each item may have any type supported by the
@@ -147,12 +146,12 @@ export default class Autosuggest extends React.Component {
      * Conversely, an empty `datalist` or undefined/null `onSearch` indicates
      * that there are no auto-complete options.
      */
-    datalist: React.PropTypes.any,
+    datalist: PropTypes.any,
     /**
      * An instance of the ListAdapter class that provides datalist access
      * methods required by this component.
      */
-    datalistAdapter: React.PropTypes.object,
+    datalistAdapter: PropTypes.object,
     /**
      * Message to be displayed at the end of the datalist. It can be used to
      * indicate that data is being fetched asynchronously, that an error
@@ -164,7 +163,7 @@ export default class Autosuggest extends React.Component {
      * reporting status, such as that options are being fetched or failed to be
      * fetched.
      */
-    datalistMessage: React.PropTypes.node,
+    datalistMessage: PropTypes.node,
     /**
      * Indicates that only values matching an item from the `datalist` property
      * are considered valid. For search purposes, intermediate values of the
@@ -183,7 +182,7 @@ export default class Autosuggest extends React.Component {
      *   changes and `datalistPartial` is false, a previously valid value will
      *   be invalidated if not in the new `datalist`.)
      */
-    datalistOnly: React.PropTypes.bool,
+    datalistOnly: PropTypes.bool,
     /**
      * Indicates that the `datalist` property should be considered incomplete
      * for validation purposes. Specifically, if both `datalistPartial` and
@@ -192,19 +191,19 @@ export default class Autosuggest extends React.Component {
      * a partial datalist is obtained dynamically in response to the `onSearch`
      * callback.
      */
-    datalistPartial: React.PropTypes.bool,
+    datalistPartial: PropTypes.bool,
     /**
      * Initial value to be rendered when used as an
      * [uncontrolled component](https://facebook.github.io/react/docs/forms.html#uncontrolled-components)
      * (i.e. no `value` property is supplied).
      */
-    defaultValue: React.PropTypes.any,
+    defaultValue: PropTypes.any,
     /**
      * Indicates whether the form group is disabled, which causes all of its
      * contained elements to ignore input and focus events and to be displayed
      * grayed out.
      */
-    disabled: React.PropTypes.bool,
+    disabled: PropTypes.bool,
     /**
      * Indicates whether the suggestion list should drop up instead of down.
      *
@@ -212,11 +211,11 @@ export default class Autosuggest extends React.Component {
      * clipped, rendering the clipped items inaccessible, whereas a drop-down
      * list will extend the page and allow scrolling as necessary.
      */
-    dropup: React.PropTypes.bool,
+    dropup: PropTypes.bool,
     /**
      * Custom class name applied to the input group.
      */
-    groupClassName: React.PropTypes.string,
+    groupClassName: PropTypes.string,
     /**
      * Function used to select a portion of the input value when auto-completion
      * occurs. The default implementation selects just the auto-completed
@@ -228,44 +227,44 @@ export default class Autosuggest extends React.Component {
      *   }
      * ```
      */
-    inputSelect: React.PropTypes.func,
+    inputSelect: PropTypes.func,
     /**
      * An instance of the ItemAdapter class that provides the item access
      * methods required by this component.
      */
-    itemAdapter: React.PropTypes.object,
+    itemAdapter: PropTypes.object,
     /**
      * Name of the item property used for the React component key. If this
      * property is not defined, `itemValuePropName` is used instead. If neither
      * property is defined, `toString()` is called on the item.
      */
-    itemReactKeyPropName: React.PropTypes.string,
+    itemReactKeyPropName: PropTypes.string,
     /**
      * Name of the item property used for sorting items. If this property is not
      * defined, `itemValuePropName` is used instead. If neither property is
      * defined, `toString()` is called on the item.
      */
-    itemSortKeyPropName: React.PropTypes.string,
+    itemSortKeyPropName: PropTypes.string,
     /**
      * Name of item property used for the input element value. If this property
      * is not defined, `toString()` is called on the item.
      */
-    itemValuePropName: React.PropTypes.string,
+    itemValuePropName: PropTypes.string,
     /**
      * Enables selection of multiple items. The value property should be an
      * array of items.
      */
-    multiple: React.PropTypes.bool,
+    multiple: PropTypes.bool,
     /**
      * Callback function called whenever a new value should be appended to the
      * array of values in `multiple` mode. The sole argument is the added item.
      */
-    onAdd: React.PropTypes.func,
+    onAdd: PropTypes.func,
     /**
      * Callback function called whenever the input focus leaves this component.
      * The sole argument is current value (see `onChange for details`).
      */
-    onBlur: React.PropTypes.func,
+    onBlur: PropTypes.func,
     /**
      * Callback function called whenever the input value changes to a different
      * valid value. Validity depends on properties such as `datalistOnly`,
@@ -279,24 +278,24 @@ export default class Autosuggest extends React.Component {
      *   if `datalistOnly` or `required` are enabled, only valid values trigger
      *   a callback.
      */
-    onChange: React.PropTypes.func,
+    onChange: PropTypes.func,
     /**
      * Callback function called whenever the datalist item created for
      * `datalistMessage` is selected. If this property is null, the associated
      * item is displayed as disabled.
      */
-    onDatalistMessageSelect: React.PropTypes.func,
+    onDatalistMessageSelect: PropTypes.func,
     /**
      * Callback function called whenever the input focus enters this component.
      * The sole argument is current value (see `onChange for details`).
      */
-    onFocus: React.PropTypes.func,
+    onFocus: PropTypes.func,
     /**
      * Callback function called whenever a value should be removed from the
      * array of values in `multiple` mode. The sole argument is the index of
      * the value to remove.
      */
-    onRemove: React.PropTypes.func,
+    onRemove: PropTypes.func,
     /**
      * Callback function called periodically when the `input` element value has
      * changed. The sole argument is the current value of the `input` element.
@@ -310,56 +309,56 @@ export default class Autosuggest extends React.Component {
      * empty string, if the user clears the `input` element; this implies that
      * any minimum search string length should be imposed by the function.
      */
-    onSearch: React.PropTypes.func,
+    onSearch: PropTypes.func,
     /**
      * Callback function called whenever an item from the suggestion list is
      * selected (regardless of whether it is clicked or typed). The sole
      * argument is the selected item.
      */
-    onSelect: React.PropTypes.func,
+    onSelect: PropTypes.func,
     /**
      * Callback function called whenever the drop-down list of suggestions is
      * opened or closed. The sole argument is a boolean value indicating whether
      * the list is open.
      */
-    onToggle: React.PropTypes.func,
+    onToggle: PropTypes.func,
     /**
      * Placeholder text propagated to the underlying `input` element (when
      * `multiple` is false or no items have been selected).
      */
-    placeholder: React.PropTypes.string,
+    placeholder: PropTypes.string,
     /**
      * `required` property passed to the `input` element (when `multiple` is
      * false or no items have been selected).
      */
-    required: React.PropTypes.bool,
+    required: PropTypes.bool,
     /**
      * The number of milliseconds that must elapse between the last change to
      * the `input` element value and a call to `onSearch`. The default is 250.
      */
-    searchDebounce: React.PropTypes.number,
+    searchDebounce: PropTypes.number,
     /**
      * Indicates whether to show the drop-down toggle. If set to `auto`, the
      * toggle is shown only when the `datalist` is non-empty or dynamic.
      */
-    showToggle: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.oneOf(['auto'])
+    showToggle: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.oneOf(['auto'])
     ]),
     /**
      * React component class used to render the drop-down list of suggestions.
      */
-    suggestionsClass: React.PropTypes.oneOfType([
-      React.PropTypes.func,
-      React.PropTypes.string
+    suggestionsClass: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string
     ]),
     /**
      * ID supplied to the drop-down toggle and used by the drop-down menu to
      * refer to it.
      */
-    toggleId: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
+    toggleId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
     ]),
     /**
      * `type` property supplied to the contained `input` element. Only textual
@@ -369,12 +368,12 @@ export default class Autosuggest extends React.Component {
      * need additional styling or may interfere with UI elements supplied by
      * this component.
      */
-    type: React.PropTypes.string,
+    type: PropTypes.string,
     /**
      * The value to be rendered by the component. If unspecified, the component
      * behaves like an [uncontrolled component](https://facebook.github.io/react/docs/forms.html#uncontrolled-components).
      */
-    value: React.PropTypes.any,
+    value: PropTypes.any,
     /**
      * Indicates that the `value` property should be interpreted as a datalist
      * item, as opposed to the string value of the underlying `input` element.
@@ -393,11 +392,11 @@ export default class Autosuggest extends React.Component {
      * case, the `value` property and `onChange` callback argument are
      * implicitly an array of datalist items.
      */
-    valueIsItem: React.PropTypes.bool
+    valueIsItem: PropTypes.bool
   };
 
   static contextTypes = {
-    $bs_formGroup: React.PropTypes.object
+    $bs_formGroup: PropTypes.object
   };
 
   static defaultInputSelect(input: HTMLInputElement, value: string, completion: string) {
@@ -461,7 +460,7 @@ export default class Autosuggest extends React.Component {
 
   constructor(props: Props, ...args: any) {
     super(props, ...args)
-
+    /* istanbul ignore next: https://github.com/gotwarlost/istanbul/issues/690#issuecomment-265718617 */
     this._itemAdapter = props.itemAdapter || new ItemAdapter()
     this._itemAdapter.receiveProps(props)
 
@@ -852,7 +851,10 @@ export default class Autosuggest extends React.Component {
 
   _focusInput() {
     const input = ReactDOM.findDOMNode(this.refs.input)
-    input.focus()
+    // istanbul ignore else
+    if (input instanceof HTMLElement) {
+      input.focus()
+    }
   }
 
   _open(eventType: string, props: Props) {
@@ -1309,8 +1311,10 @@ export default class Autosuggest extends React.Component {
 
   _getCursorPosition(input: React.Component<*, *, *>): ?number {
     const inputNode = ReactDOM.findDOMNode(input)
-    return inputNode ? inputNode.selectionStart : /* istanbul ignore next */
-      undefined
+    // istanbul ignore else
+    if (inputNode instanceof HTMLInputElement) {
+      return inputNode.selectionStart
+    }
   }
 
   // autobind
