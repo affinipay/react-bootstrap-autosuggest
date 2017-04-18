@@ -18,7 +18,7 @@ Alternatively, load the minified UMD (Universal Module Definition) build:
 
     <script src="path-to-dist/react-bootstrap-autosuggest.min.js"></script>
 
-Note that the required CSS styles (in addition to Bootstrap) are included automatically for either build. The CommonJS module executes `require('Autosuggest.scss')`, which requires that you configure the appropriate [Sass](http://sass-lang.com/) loader (such as [Webpack](https://webpack.github.io/)'s [sass-loader](https://github.com/jtangelder/sass-loader)) in your application build. The UMD build uses an embedded stylesheet and Webpack's [style-loader](https://github.com/webpack/style-loader) to automatically inject a `<style>` tag into the document head.
+Note that the CSS styles required by the component are no longer included automatically as of version 0.5. For [Webpack](https://webpack.github.io/) users, the recommended approach is to configure [sass-loader](https://github.com/jtangelder/sass-loader) and then `require('Autosuggest.scss')` in your application. You can either specify the full path (e.g. `./node_modules/react-bootstrap-autosuggest/src/Autosuggest.scss`) or include `./node_modules/react-bootstrap-autosuggest/src` as a search path.
 
 ## Motivation
 
