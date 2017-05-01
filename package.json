@@ -37,7 +37,7 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "^15.5.0",
-    "react-bootstrap": "^0.30.0",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.0"
   },
   "dependencies": {
@@ -100,7 +100,7 @@
     "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
-    "react-bootstrap": "^0.30.8",
+    "react-bootstrap": "^0.31.0",
     "react-codemirror": "^0.3.0",
     "react-docgen": "^2.14.0",
     "react-dom": "^15.5.4",
