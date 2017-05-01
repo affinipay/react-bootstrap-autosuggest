@@ -10,7 +10,7 @@ tag/pill-style user interface within a simulated text box.
 #### addonAfter
 
 ```js
-addonAfter: ReactNode
+addonAfter: PropTypes.node (custom validator)
 ```
 
 Text or component appearing in the input group after the input element
@@ -19,7 +19,7 @@ Text or component appearing in the input group after the input element
 #### addonBefore
 
 ```js
-addonBefore: ReactNode
+addonBefore: PropTypes.node (custom validator)
 ```
 
 Text or component appearing in the input group before the input element
@@ -28,7 +28,7 @@ Text or component appearing in the input group before the input element
 #### allowDuplicates
 
 ```js
-allowDuplicates: Boolean
+allowDuplicates: PropTypes.bool (custom validator)
 ```
 
 Indicates whether duplicate values are allowed in `multiple` mode.
@@ -36,7 +36,7 @@ Indicates whether duplicate values are allowed in `multiple` mode.
 #### bsSize
 
 ```js
-bsSize: ('small'|'large')
+bsSize: PropTypes.oneOf(['small', 'large']) (custom validator)
 ```
 
 Specifies the size of the form group and its contained components.
@@ -45,7 +45,7 @@ Leave undefined for normal/medium size.
 #### buttonAfter
 
 ```js
-buttonAfter: ReactNode
+buttonAfter: PropTypes.node (custom validator)
 ```
 
 Button component appearing in the input group after the input element
@@ -54,7 +54,7 @@ Button component appearing in the input group after the input element
 #### buttonBefore
 
 ```js
-buttonBefore: ReactNode
+buttonBefore: PropTypes.node (custom validator)
 ```
 
 Button component appearing in the input group before the input element
@@ -63,7 +63,10 @@ Button component appearing in the input group before the input element
 #### choicesClass
 
 ```js
-choicesClass: (Function|String)
+choicesClass: PropTypes.oneOfType([
+  PropTypes.func,
+  PropTypes.string
+]) (custom validator)
 ```
 
 React component class used to render the selected items in multiple mode.
@@ -72,7 +75,7 @@ React component class used to render the selected items in multiple mode.
 
 ```js
 // Default: false
-closeOnCompletion: Boolean
+closeOnCompletion: PropTypes.bool (custom validator)
 ```
 
 Indicates whether the drop-down menu should be closed automatically when
@@ -83,7 +86,7 @@ a shorthand code that caused it to be selected).
 #### datalist
 
 ```js
-datalist: *
+datalist: PropTypes.any (custom validator)
 ```
 
 A collection of items (such as an array, object, or Map) used as
@@ -104,7 +107,7 @@ that there are no auto-complete options.
 #### datalistAdapter
 
 ```js
-datalistAdapter: Object
+datalistAdapter: PropTypes.object (custom validator)
 ```
 
 An instance of the ListAdapter class that provides datalist access
@@ -113,7 +116,7 @@ methods required by this component.
 #### datalistMessage
 
 ```js
-datalistMessage: ReactNode
+datalistMessage: PropTypes.node (custom validator)
 ```
 
 Message to be displayed at the end of the datalist. It can be used to
@@ -130,7 +133,7 @@ fetched.
 
 ```js
 // Default: false
-datalistOnly: Boolean
+datalistOnly: PropTypes.bool (custom validator)
 ```
 
 Indicates that only values matching an item from the `datalist` property
@@ -154,7 +157,7 @@ correspond to an item in the datalist:
 
 ```js
 // Default: false
-datalistPartial: Boolean
+datalistPartial: PropTypes.bool (custom validator)
 ```
 
 Indicates that the `datalist` property should be considered incomplete
@@ -167,7 +170,7 @@ callback.
 #### defaultValue
 
 ```js
-defaultValue: *
+defaultValue: PropTypes.any (custom validator)
 ```
 
 Initial value to be rendered when used as an
@@ -178,7 +181,7 @@ Initial value to be rendered when used as an
 
 ```js
 // Default: false
-disabled: Boolean
+disabled: PropTypes.bool (custom validator)
 ```
 
 Indicates whether the form group is disabled, which causes all of its
@@ -189,7 +192,7 @@ grayed out.
 
 ```js
 // Default: false
-dropup: Boolean
+dropup: PropTypes.bool (custom validator)
 ```
 
 Indicates whether the suggestion list should drop up instead of down.
@@ -201,7 +204,7 @@ list will extend the page and allow scrolling as necessary.
 #### groupClassName
 
 ```js
-groupClassName: String
+groupClassName: PropTypes.string (custom validator)
 ```
 
 Custom class name applied to the input group.
@@ -210,7 +213,7 @@ Custom class name applied to the input group.
 
 ```js
 // Default: Autosuggest.defaultInputSelect
-inputSelect: Function
+inputSelect: PropTypes.func (custom validator)
 ```
 
 Function used to select a portion of the input value when auto-completion
@@ -226,7 +229,7 @@ portion, which is equivalent to:
 #### itemAdapter
 
 ```js
-itemAdapter: Object
+itemAdapter: PropTypes.object (custom validator)
 ```
 
 An instance of the ItemAdapter class that provides the item access
@@ -236,7 +239,7 @@ methods required by this component.
 
 ```js
 // Default: 'key'
-itemReactKeyPropName: String
+itemReactKeyPropName: PropTypes.string (custom validator)
 ```
 
 Name of the item property used for the React component key. If this
@@ -247,7 +250,7 @@ property is defined, `toString()` is called on the item.
 
 ```js
 // Default: 'sortKey'
-itemSortKeyPropName: String
+itemSortKeyPropName: PropTypes.string (custom validator)
 ```
 
 Name of the item property used for sorting items. If this property is not
@@ -258,7 +261,7 @@ defined, `toString()` is called on the item.
 
 ```js
 // Default: 'value'
-itemValuePropName: String
+itemValuePropName: PropTypes.string (custom validator)
 ```
 
 Name of item property used for the input element value. If this property
@@ -268,7 +271,7 @@ is not defined, `toString()` is called on the item.
 
 ```js
 // Default: false
-multiple: Boolean
+multiple: PropTypes.bool (custom validator)
 ```
 
 Enables selection of multiple items. The value property should be an
@@ -277,7 +280,7 @@ array of items.
 #### onAdd
 
 ```js
-onAdd: Function
+onAdd: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever a new value should be appended to the
@@ -286,7 +289,7 @@ array of values in `multiple` mode. The sole argument is the added item.
 #### onBlur
 
 ```js
-onBlur: Function
+onBlur: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever the input focus leaves this component.
@@ -295,7 +298,7 @@ The sole argument is current value (see `onChange for details`).
 #### onChange
 
 ```js
-onChange: Function
+onChange: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever the input value changes to a different
@@ -313,7 +316,7 @@ valid value. Validity depends on properties such as `datalistOnly`,
 #### onDatalistMessageSelect
 
 ```js
-onDatalistMessageSelect: Function
+onDatalistMessageSelect: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever the datalist item created for
@@ -323,7 +326,7 @@ item is displayed as disabled.
 #### onFocus
 
 ```js
-onFocus: Function
+onFocus: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever the input focus enters this component.
@@ -332,7 +335,7 @@ The sole argument is current value (see `onChange for details`).
 #### onRemove
 
 ```js
-onRemove: Function
+onRemove: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever a value should be removed from the
@@ -342,7 +345,7 @@ the value to remove.
 #### onSearch
 
 ```js
-onSearch: Function
+onSearch: PropTypes.func (custom validator)
 ```
 
 Callback function called periodically when the `input` element value has
@@ -360,7 +363,7 @@ any minimum search string length should be imposed by the function.
 #### onSelect
 
 ```js
-onSelect: Function
+onSelect: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever an item from the suggestion list is
@@ -370,7 +373,7 @@ argument is the selected item.
 #### onToggle
 
 ```js
-onToggle: Function
+onToggle: PropTypes.func (custom validator)
 ```
 
 Callback function called whenever the drop-down list of suggestions is
@@ -380,7 +383,7 @@ the list is open.
 #### placeholder
 
 ```js
-placeholder: String
+placeholder: PropTypes.string (custom validator)
 ```
 
 Placeholder text propagated to the underlying `input` element (when
@@ -389,7 +392,7 @@ Placeholder text propagated to the underlying `input` element (when
 #### required
 
 ```js
-required: Boolean
+required: PropTypes.bool (custom validator)
 ```
 
 `required` property passed to the `input` element (when `multiple` is
@@ -399,7 +402,7 @@ false or no items have been selected).
 
 ```js
 // Default: 250
-searchDebounce: Number
+searchDebounce: PropTypes.number (custom validator)
 ```
 
 The number of milliseconds that must elapse between the last change to
@@ -409,7 +412,10 @@ the `input` element value and a call to `onSearch`. The default is 250.
 
 ```js
 // Default: 'auto'
-showToggle: (Boolean|('auto'))
+showToggle: PropTypes.oneOfType([
+  PropTypes.bool,
+  PropTypes.oneOf(['auto'])
+]) (custom validator)
 ```
 
 Indicates whether to show the drop-down toggle. If set to `auto`, the
@@ -418,7 +424,10 @@ toggle is shown only when the `datalist` is non-empty or dynamic.
 #### suggestionsClass
 
 ```js
-suggestionsClass: (Function|String)
+suggestionsClass: PropTypes.oneOfType([
+  PropTypes.func,
+  PropTypes.string
+]) (custom validator)
 ```
 
 React component class used to render the drop-down list of suggestions.
@@ -426,7 +435,10 @@ React component class used to render the drop-down list of suggestions.
 #### toggleId
 
 ```js
-toggleId: (String|Number)
+toggleId: PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number
+]) (custom validator)
 ```
 
 ID supplied to the drop-down toggle and used by the drop-down menu to
@@ -436,7 +448,7 @@ refer to it.
 
 ```js
 // Default: 'text'
-type: String
+type: PropTypes.string (custom validator)
 ```
 
 `type` property supplied to the contained `input` element. Only textual
@@ -449,7 +461,7 @@ this component.
 #### value
 
 ```js
-value: *
+value: PropTypes.any (custom validator)
 ```
 
 The value to be rendered by the component. If unspecified, the component
@@ -459,7 +471,7 @@ behaves like an [uncontrolled component](https://facebook.github.io/react/docs/f
 
 ```js
 // Default: false
-valueIsItem: Boolean
+valueIsItem: PropTypes.bool (custom validator)
 ```
 
 Indicates that the `value` property should be interpreted as a datalist
