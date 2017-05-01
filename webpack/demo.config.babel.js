@@ -1,3 +1,4 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import { cmdLineOptions, getBaseConfig, jsLoader, cssLoader, sassLoader } from './base.config.babel'
@@ -11,8 +12,9 @@ export function withOptions(options = cmdLineOptions) {
   const entryBundle = []
   if (options.debug) {
     baseConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
-    baseConfig.plugins.push(new webpack.NoErrorsPlugin())
-    debugLoaders.push({ test: /\.js/, loader: 'react-hot', exclude: /node_modules/ })
+    baseConfig.plugins.push(new webpack.NamedModulesPlugin())
+    baseConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin())
+    entryBundle.push('react-hot-loader/patch'),
     entryBundle.push(`webpack-dev-server/client?${webpackDevServerAddress}`)
     entryBundle.push('webpack/hot/only-dev-server')
   }
@@ -30,11 +32,13 @@ export function withOptions(options = cmdLineOptions) {
     output: {
       filename: '[name].js',
       path: path.resolve('site'),
-      publicPath: options.debug ? `${webpackDevServerAddress}/` : '/'
+      publicPath: options.debug ? `${webpackDevServerAddress}/` : '/react-bootstrap-autosuggest/'
     },
 
     devServer: {
-      contentBase: path.resolve('demo')
+      contentBase: path.resolve('demo'),
+      host: options.host,
+      port: options.port
     },
 
     module: {
@@ -46,6 +50,14 @@ export function withOptions(options = cmdLineOptions) {
         { test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/, loader: 'file-loader?name=[name].[ext]' }
       ]
     },
+
+    plugins: [
+      ...baseConfig.plugins,
+      new HtmlWebpackPlugin({
+        title: 'react-bootstrap-autosuggest',
+        template: 'demo/index.ejs'
+      })
+    ],
 
     resolve: {
       alias: {

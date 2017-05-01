@@ -71,7 +71,7 @@ gulp.task('babel', ['clean-lib'], function() {
 
 gulp.task('webpack', ['clean-dist'], function() {
   return gulp.src(getWebpackEntries(webpackConfig))
-    .pipe(webpackStream(webpackConfig))
+    .pipe(webpackStream(webpackConfig, webpack))
     .pipe(gulp.dest(dist))
 })
 
@@ -88,7 +88,7 @@ gulp.task('webpack-min', ['clean-dist'], function() {
     ]
   }
   return gulp.src(getWebpackEntries(config))
-    .pipe(webpackStream(config))
+    .pipe(webpackStream(config, webpack))
     .pipe(gulp.dest(dist))
 })
 
@@ -116,8 +116,7 @@ gulp.task('demo-copy', ['clean-demo'], function() {
       demo + '/*.png',
       demo + '/*.svg',
       demo + '/*.xml',
-      demo + '/images/*',
-      demo + '/index.html'
+      demo + '/images/*'
     ], { base: demo })
     .pipe(gulp.dest(site))
 })
@@ -136,7 +135,7 @@ gulp.task('demo-webpack', ['clean-demo'], function() {
   }
   const entries = getWebpackEntries(config)
   return gulp.src(entries[entries.length - 1])
-    .pipe(webpackStream(config))
+    .pipe(webpackStream(config, webpack))
     .pipe(gulp.dest(site))
 })
 

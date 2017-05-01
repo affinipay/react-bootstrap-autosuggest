@@ -1,6 +1,7 @@
 {
   "plugins": [
     "check-es2015-constants",
+    "react-hot-loader/babel",
     "syntax-flow",
     "syntax-jsx",
     "transform-class-properties",

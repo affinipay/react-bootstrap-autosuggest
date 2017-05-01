@@ -68,7 +68,7 @@ class StateAdapter extends ItemAdapter {
   renderItem(item) {
     return <div className="state-item">
       {item.name}<span className="abbrev">{item.abbr}</span>
-      <div className="state-image"><img src={`images/${item.abbr}.png`}/></div>
+      <div className="state-image"><img src={`images/${item.abbr.toLowerCase()}.png`}/></div>
     </div>
   }
 }
