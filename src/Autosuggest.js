@@ -1068,7 +1068,7 @@ export default class Autosuggest extends React.Component {
     }
     const { suggestionsClass: SuggestionsClass = Suggestions,
       datalistMessage, onDatalistMessageSelect, toggleId } = this.props
-    return <SuggestionsClass ref="suggestions"
+    return items.length ? <SuggestionsClass ref="suggestions"
       datalistMessage={datalistMessage}
       filtered={filtered}
       focusedIndex={focusedIndex}
@@ -1081,7 +1081,7 @@ export default class Autosuggest extends React.Component {
       onDisableFilter={this._handleShowAll}
       onSelect={this._handleItemSelect}
       open={open}
-      renderItem={this._renderSuggested} />
+      renderItem={this._renderSuggested} /> : null;
   }
 
   _allowItem(item: any): boolean {
