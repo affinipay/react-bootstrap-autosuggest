@@ -362,11 +362,11 @@ export default class Autosuggest extends React.Component {
     ]),
     /**
      * `type` property supplied to the contained `input` element. Only textual
-     * types should be specified, such as `text`, `search`, `email`, `tel`, or
-     * perhaps `number`. Note that the browser may supply additional UI elements
-     * for some types (e.g. increment/decrement buttons for `number`) that may
-     * need additional styling or may interfere with UI elements supplied by
-     * this component.
+     * types should be specified, such as `text`, `search`, `email`, `tel`,
+     * `number`, or perhaps `textarea`. Note that the browser may supply 
+     * additional UI elements for some types (e.g. increment/decrement buttons 
+     * for `number`) that may need additional styling or may interfere with 
+     * UI elements supplied by this component.
      */
     type: PropTypes.string,
     /**
@@ -407,6 +407,7 @@ export default class Autosuggest extends React.Component {
     case 'url':
     case 'tel':
     case 'password':
+    case 'textarea':
       // istanbul ignore else
       if (input.setSelectionRange) {
         input.setSelectionRange(value.length, completion.length)
@@ -1020,7 +1021,9 @@ export default class Autosuggest extends React.Component {
     const noneSelected = !this.props.multiple || !this.state.selectedItems.length
     // set autoComplete off to avoid a redundant browser drop-down menu,
     // but allow it to be overridden by extra props for auto-fill purposes
-    return <input
+
+    const _input = this.props.type === 'textarea' ? 'textarea' : 'input'
+    return <_input 
       autoComplete="off"
       {...extraProps}
       className={classNames(this.props.className,

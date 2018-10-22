@@ -245,6 +245,13 @@ describe('Autosuggest', () => {
     expect(input.props().placeholder).to.equal(placeholder)
   })
 
+  it('supports textarea', () => {
+    const type = 'textarea'
+    const autosuggest = shallow(<Autosuggest type={type} />)
+    const input = autosuggest.find('textarea')
+    expect(input).to.have.length(1)
+  })
+
   it('supports multiple selections', () => {
     const autosuggest = mount(<Autosuggest multiple value={['abc', '123']} />)
     const formControl = autosuggest.find('.form-control')
