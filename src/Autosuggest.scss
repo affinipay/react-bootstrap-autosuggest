@@ -106,10 +106,10 @@ $autosuggest-choice-gutter-large: 8px;
   .no-matches:lang(es):after {
     content: " (no hay coincidencias)"
   }
-  .show-all:lang(de):before {
+  .show-all:lang(fr):before {
     content: "Montre tout"
   }
-  .no-matches:lang(de):after {
+  .no-matches:lang(fr):after {
     content: " (pas de correspondance)"
   }
 }
